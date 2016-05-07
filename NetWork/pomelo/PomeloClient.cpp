@@ -100,10 +100,6 @@ static void request_cb(const pc_request_t* req, int rc, const char* resp)
 {
     PC_TEST_ASSERT(rc == PC_RC_OK);
     PC_TEST_ASSERT(resp);
-    
-    printf("test get resp %s\n", resp);
-    fflush(stdout);
-    
     PC_TEST_ASSERT(pc_request_client(req) == PomeloClient::getInstance()->client);
     PC_TEST_ASSERT(!strcmp(pc_request_route(req), REQ_ROUTE));
     PC_TEST_ASSERT(!strcmp(pc_request_msg(req), REQ_MSG));

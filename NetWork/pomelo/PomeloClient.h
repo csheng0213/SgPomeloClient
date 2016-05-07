@@ -38,7 +38,6 @@ public:
     void request(const std::string& route, const std::string& jsonData, PomeloRequestCB cb);
     void notify(const std::string& route, const std::string& jsonData);
    
-    
     //事件监听
     PomeloEventCB getEventCB()
     {
