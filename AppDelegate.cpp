@@ -121,12 +121,14 @@ bool AppDelegate::applicationDidFinishLaunching()
     if (!PomeloClient::getInstance()->Connection("127.0.0.1", 3010))
     {
         printf("not connect to server!");
+    }else
+    {
+//        PomeloClient::getInstance()->request("connector.entryHandler.entry", "{\"name\": \"test\"}", [](const pc_request_t* req, int rc, const char* resp)
+//                                             {
+//                                                 printf("msg: %s", resp);
+//                                             });
+//        PomeloClient::getInstance()->notify("test.testHandler.notify", "{\"content\": \"test content\"}");
     }
-    PomeloClient::getInstance()->request("connector.entryHandler.entry", "{\"name\": \"test\"}", [](const pc_request_t* req, int rc, const char* resp)
-                                         {
-                                             printf("msg: %s", resp);
-                                         });
-    PomeloClient::getInstance()->notify("test.testHandler.notify", "{\"content\": \"test content\"}");
     return true;
 }
 

@@ -20,6 +20,7 @@
 #include "debugTool.h"
 
 #include "CHttpClinet.hpp"
+#include "PomeloClient.h"
 
 USING_NS_CC;
 
@@ -238,7 +239,8 @@ int L_SendToServer(lua_State *L)
 
 int L_ServerMainLoop(lua_State *L)
 {
-    OnlineComponent::instance()->mainLoop();
+//    OnlineComponent::instance()->mainLoop();
+    PomeloClient::getInstance()->loop();
     return 0;
 }
 

@@ -91,6 +91,9 @@ static void event_cb(pc_client_t* client, int ev_type, void* ex_data, const char
     PC_TEST_ASSERT(ex_data == EV_HANDLER_EX);
     printf("test: get event %s, arg1: %s, arg2: %s\n", pc_client_ev_str(ev_type),
            arg1 ? arg1 : "", arg2 ? arg2 : "");
+    
+    if(PomeloClient::getInstance()->getEventCB())
+        PomeloClient::getInstance()->getEventCB()(ev_type, arg1, arg2);
 }
 
 static void request_cb(const pc_request_t* req, int rc, const char* resp)
@@ -131,6 +134,7 @@ PomeloClient* PomeloClient::getInstance()
 
 
 PomeloClient::PomeloClient()
+:m_pomeloEventCB(nullptr)
 {
     pc_lib_init(NULL, NULL, NULL, NULL);
     client = (pc_client_t*)malloc(pc_client_size());
